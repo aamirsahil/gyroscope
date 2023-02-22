@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Idealisation</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel = "stylesheet" href="css/frame.css">
+        <link rel = "stylesheet" href="css/idealisation.css">
+    </head>
+
+    <body>
+        <!--logo-->
+        <a id="logo" href="index.html"><img src="images/logo.webp"></a>
+        
+        <!--page thumbnails-->
+        <div id="page_thumbnails_container"></div>
+
+        <!--progress-->
+        <div id="progress"></div>
+
+        <!--page names-->
+        <div id="page_names"></div>
+
+        <!--content-->
+        <div id="content">
+
+            <!--Aliceblue box-->
+            <div id="section_1">
+                <p id="heading"><b>Let's idealise things</b></p>
+            Here we ignore the details which are unnecessary to solving the problem at hand.
+            <p id="descript">
+                <b>use the slider to strip  away  unwanted details</b><br><br><br>
+                <!--  -->
+                <input type="range" id="slider" class="slider" min="0" max="1" step="0.01" value="0" oninput="Changer(this.value)">
+                <ul>
+                    <li id="item1">We consider rotating systems as a cylinder rotating uniformally about a fixed axis !
+                    </li> <br>
+                    <li id="item2">Then we further assume that details like colour, material particulars, temparture etc are insignificant.</li> 
+                </ul> 
+                <p id="item3"><br><b>Now we are good to analyse the geometry of the system.</b></p>
+            </p>
+            
+            </div>
+
+            <!--White box-->
+            <div id="section_2">
+                    <div id="ideal"></div>
+                    <!-- <img id="real" src="images/realGyro.gif"> -->
+            </div>
+
+        </div> 
+
+        <!--navigation-->
+        <span id="navigator"></span>
+        
+        <!--script after loading page-->
+        <script type="text/javascript" src="js/frame.js"></script>
+        <script type="text/javascript" src="js/idealisation.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/three@0.119.1/build/three.min.js"></script>
+        <script>
+            const SLIDER = document.getElementById("slider");
+            const container = document.getElementById("ideal");
+            // Create the scene and set the camera
+            var scene = new THREE.Scene();
+            var camera = new THREE.PerspectiveCamera(75, container.offsetWidth / container.offsetHeight, 0.1, 1000);
+            camera.position.z = 1;
+
+            // Create the renderer and add it to the page
+            var renderer = new THREE.WebGLRenderer();
+            renderer.setSize(container.offsetWidth, container.offsetHeight);
+            renderer.setClearColor( 0xffffff );
+            container.appendChild(renderer.domElement);
+
+            var planeTexture = new THREE.TextureLoader().load( './images/wood.jpg' );
+            var planeGeometry = new THREE.PlaneGeometry( 5, 5, 32 );
+            var planeMaterial = new THREE.MeshBasicMaterial( { map: planeTexture, side: THREE.DoubleSide, transparent: true, opacity: 1.0 } );
+            var plane = new THREE.Mesh( planeGeometry, planeMaterial );
+
+            plane.rotation.x = Math.PI / 2;
+            plane.position.y = -0.5;
+
+            scene.add( plane );
+
+            // Create the stationary stand
+            var standTexture = new THREE.TextureLoader().load( './images/stand.jpg' );
+            var standGeometry = new THREE.ConeGeometry(0.2, 0.5, 32);
+            var standMaterial = new THREE.MeshBasicMaterial({ map: standTexture, transparent: true, opacity: 1.0 });
+            var stand = new THREE.Mesh(standGeometry, standMaterial);
+            scene.add(stand);
+
+            stand.position.y = -0.25;
+
+            // Create the rotating axle
+            var pivot = new THREE.Object3D();
+            scene.add( pivot );
+            // axlePivot.position.y = 0.25;
+            // var phiPivot = new THREE.Object3D();
+            pivot.rotation.z = Math.PI/3;
+            
+            var axleTexture = new THREE.TextureLoader().load( './images/axle.jpg' );
+            var axleGeometry = new THREE.CylinderGeometry(0.05, 0.05, 0.5, 32);
+            var axleMaterial = new THREE.MeshBasicMaterial({ map: axleTexture, transparent: true, opacity: 1.0 });
+            var axle = new THREE.Mesh(axleGeometry, axleMaterial);
+
+            axle.position.y = 0.20;
+
+            // Create the disk
+            var diskTexture = new THREE.TextureLoader().load( './images/disk.jpg' );
+            var diskGeometry = new THREE.CylinderGeometry(0.25, 0.25, 0.05, 32);
+            var diskMaterial = new THREE.MeshBasicMaterial({ map: diskTexture, transparent: true, opacity: 1.0 });
+            var disk = new THREE.Mesh(diskGeometry, diskMaterial);
+            
+            disk.position.y = 0.45;
+
+            // Create the stationary stand
+            var idealStandGeometry = new THREE.CylinderGeometry(0.005, 0.005, 1, 32);
+            var idealStandMaterial = new THREE.MeshBasicMaterial({ color: 0x000000, transparent: true, opacity: 0.0 });
+            var idealStand = new THREE.Mesh(idealStandGeometry, idealStandMaterial);
+            
+            idealStand.position.z = 0;
+            idealStand.position.y = 1/2;
+            
+            scene.add(idealStand);
+
+            // // Create the rotating axle
+            var idealAxleGeometry = new THREE.CylinderGeometry(0.005, 0.005, 0.5, 32);
+            var idealAxleMaterial = new THREE.MeshBasicMaterial({ color: 0x000000, transparent: true, opacity: 0.0 });
+            var idealAxle = new THREE.Mesh(idealAxleGeometry, idealAxleMaterial);
+
+            idealAxle.position.y = 0.20;
+            
+            // // Create the disk
+            var idealDiskGeometry = new THREE.CylinderGeometry(0.25, 0.25, 0.05, 32);
+            var idealDiskMaterial = new THREE.MeshBasicMaterial({ color: 0x000000, transparent: true, opacity: 0.0 });
+            var idealDisk = new THREE.Mesh(idealDiskGeometry, idealDiskMaterial);
+            
+            idealDisk.position.y = 0.45;
+            
+            pivot.add( axle );
+            pivot.add( disk );
+
+            idealAxle.renderOrder = -1;
+            idealDisk.renderOrder = -1;
+            idealStand.renderOrder = -1;
+
+            pivot.add(idealDisk);
+            pivot.add(idealAxle);
+            
+            // Create the spinning animation
+            var animate = function() {
+                requestAnimationFrame(animate);
+                let slider_value = SLIDER.value;
+
+                standMaterial.opacity = 1 - slider_value;
+                axleMaterial.opacity = 1 - slider_value;
+                diskMaterial.opacity = 1 - slider_value;
+                planeMaterial.opacity = 1 - slider_value;
+
+                idealStandMaterial.opacity = slider_value;
+                idealAxleMaterial.opacity = slider_value;
+                idealDiskMaterial.opacity = slider_value*0.75;
+
+                pivot.rotation.y += 0.01;
+                disk.rotation.y += 0.01;
+                idealDisk.rotation.y += 0.01; 
+
+                renderer.render(scene, camera);
+            };
+
+            // handle window resize
+            function onWindowResize() {
+                camera.aspect = container.offsetWidth / container.offsetHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(container.offsetWidth, container.offsetHeight);
+            }
+            window.addEventListener('resize', onWindowResize);
+
+            animate();
+        </script>
+
+    </body>
+
+</html>

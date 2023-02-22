@@ -1,0 +1,41 @@
+h2 {
+    padding-bottom:25vh ;
+    transform:scale(var(--dim1),var(--dim2));
+}
+#page_thumbnails_container{
+    height: 25vh;
+    padding-top: 0;
+    padding-bottom: 3vh;
+    transform: rotate(15deg);
+}
+.thumbnail {
+    width: 16vw;
+    border-radius: 5%;
+    transform: rotate(-15deg);
+    opacity: 0.8;
+} 
+.thumbnail > img {
+    border-radius: 5%;
+}
+#page_names {
+    height: 5vh;
+    padding: 0 ;
+    margin: auto;
+    transform: rotate(15deg);
+}
+#page_names > text {
+    transform: rotate(-15deg) scale(var(--dim1),var(--dim2)); 
+    width: 16vw;
+    opacity: 1;
+} 
+#progress {
+    visibility: hidden;
+}
+
+#oleft{
+    position:absolute;left:0;top:0;
+}
+#oright{
+    position:absolute;right:0;bottom:0;
+    transform: rotate(180deg);
+}

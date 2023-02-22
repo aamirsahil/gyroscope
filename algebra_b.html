@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Algebra</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel = "stylesheet" href="css/frame.css">
+        <link rel = "stylesheet" href="css/algebra.css">
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sketch.js/1.0/sketch.min.js" integrity="sha512-kSEyW+qGJr8nB9W0xap8JTmchLnDdjAh5OBrjWQmWbfjRKRNb1goxSWmJbwFN6Gnf+ruF1fmvQhVwYPt/0hKqA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.min.js" integrity="sha512-NxocnqsXP3zm0Xb42zqVMvjQIktKEpTIbCXXyhBPxqGZHqhcOXHs4pXI/GoZ8lE+2NJONRifuBpi9DxC58L0Lw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+    </head>
+
+    <body>
+        <!--logo-->
+        <a id="logo" href="index.html"><img src="images/logo.webp"></a>
+        
+        <!--page thumbnails-->
+        <div id="page_thumbnails_container"></div>
+
+        <!--progress-->
+        <div id="progress"></div>
+
+        <!--page names-->
+        <div id="page_names"></div>
+
+        <!--content-->
+        <div id="content">
+
+            <!--Aliceblue box-->
+            <div id="section_1">
+                <br><br>Progress time :
+                <input type="range" autocomplete="off" id="slider" min="0" max="1" step="0.01" value="0" oninput="timeChanger(this.value)">
+                <br><br>
+            </div>
+
+            <!--White box-->
+            <div id="section_2">
+                <div id="section_21">
+                    $continuing..$
+                    <br> <br>
+                    <p> which implies $\tau_{1} = -mg_{e}Lsin\theta$ <br>
+                      $\hskip 12em$where, $\hskip 1em g_{e} = g(1-\frac{\rho _{f}}{\rho_{b}})$</p>
+                    <p>Torque due to viscous drag ,$ \tau _{2} = -avL $</p>
+                    <p>Net Torque $\hskip 1 em \tau = \tau _{1} + \tau _{2} = -(mg_{e}Lsin\theta + avL)\hskip 4em$  ..eq(2)  </p>
+                    <p>from (1) and (2) ,
+                        <fieldset class="xp" onclick="xplain(1)">
+                        $$ \Omega = \frac{rMg}{T\omega} $$
+                        </fieldset>
+                    </p>
+                    <p>is the equation of motion for the pendulum.</p>
+                    
+                </div>
+                <div id="section_22">
+                    <i>click on coloured equations for hints</i>
+                    <div id="exp0">
+                        <p> Torque , $ \tau=  r\times F $ </p>
+                        <p>Torque from gravity , $$\tau_{g}=  L \times -mg = -mgLsin\theta$$</p>
+                        <P>Torque from buoyant force , $$\tau_{b}=  L \times \rho _{f}Vg = \rho _{f}VgLsin\theta$$</P>
+    
+                    </div>
+                    <div id="exp1">
+                        <p>for the pendulum,$$I = mL^{2} $$ </p>
+                        <p> and $$\alpha = \frac{d^{2}\theta }{dt^{2}} ,\hskip 1em v = \frac{d\theta }{dt} $$</p>
+                        <p> $$\Rightarrow mL^{2}\frac{d^{2}\theta }{dt^{2}} = -(mg_{e}Lsin\theta + a\frac{d\theta }{dt}L)$$</p>
+    
+                    </div>
+                </div>
+            </div>
+
+        </div> 
+
+        <!--navigation-->
+        <span id="navigator"></span>
+        
+        <!--script after loading page-->
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script> MathJax = { tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]}}; </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+        <script type="text/javascript" src="js/frame.js"></script>
+        <script type="text/javascript" src="js/algebra_b.js"></script>
+
+    </body>
+
+</html>
