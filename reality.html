@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Reality</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel = "stylesheet" href="css/frame.css">
+        <link rel = "stylesheet" href="css/reality.css">
+    </head>
+
+    <body>
+        <!--logo-->
+        <a id="logo" href="index.html"><img src="images/logo.webp"></a>
+
+        <!--page thumbnails-->
+        <div id="page_thumbnails_container"></div>
+
+        <!--progress-->
+        <div id="progress"></div>
+
+        <!--page names-->
+        <div id="page_names"></div>
+
+        <!--content-->
+        <div id="content">
+
+            <!--Aliceblue box-->
+            <div id="section_1">
+                <p id="heading"><b>Looking into reality</b></p>
+                <p id="descript">
+                    <ul>
+                        <li>A toymaker wants to make a gyroscope that precesses at the exact rate he wants.</li> <br> <br>
+                        <li>A motor biker wants to know why they dont fall down when leaning down during taking a turn. </li> <br>
+                    </ul>
+                    We can answer these questions by mathematically modelling the motion of rotating rigid body, in these case a cylinder ! <br> <br><br>
+                    <b>To mathematically model, let us first idealise the system !</b>
+                </p>
+            </div>
+
+            <!--White box-->
+            <div id="section_2">
+                 <figure>
+                    <video loop autoplay muted> <source src="images/realGyro1.mp4" type="video/mp4"> </video> <figcaption>Gyroscope</figcaption>
+                </figure>               
+                <figure>
+                    <video loop autoplay muted> <source src="images/realGyro2.mp4" type="video/mp4"> </video>
+                <figcaption> Stable turn</figcaption>
+                </figure>
+            </div>
+        </div> 
+
+        <!--navigation-->
+        <span id="navigator"></span>
+        
+        <!--script after loading page-->
+        <script type="text/javascript" src="js/frame.js"></script>
+        <script type="text/javascript" src="js/reality.js"></script>
+
+    </body>
+
+</html>

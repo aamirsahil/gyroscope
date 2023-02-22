@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Algebra</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel = "stylesheet" href="css/frame.css">
+        <link rel = "stylesheet" href="css/algebra.css">
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sketch.js/1.0/sketch.min.js" integrity="sha512-kSEyW+qGJr8nB9W0xap8JTmchLnDdjAh5OBrjWQmWbfjRKRNb1goxSWmJbwFN6Gnf+ruF1fmvQhVwYPt/0hKqA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.min.js" integrity="sha512-NxocnqsXP3zm0Xb42zqVMvjQIktKEpTIbCXXyhBPxqGZHqhcOXHs4pXI/GoZ8lE+2NJONRifuBpi9DxC58L0Lw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+    </head>
+
+    <body>
+        <!--logo-->
+        <a id="logo" href="index.html"><img src="images/logo.webp"></a>
+        
+        <!--page thumbnails-->
+        <div id="page_thumbnails_container"></div>
+
+        <!--progress-->
+        <div id="progress"></div>
+
+        <!--page names-->
+        <div id="page_names"></div>
+
+        <!--content-->
+        <div id="content">
+
+            <!--Aliceblue box-->
+            <div id="section_1">
+
+            </div>
+
+            <!--White box-->
+            <div id="section_2">
+                <div id="section_21">
+                    <p id="heading"><b>let's do some algebra</b></p>
+                    <p onclick="shw(0)" class="eq">force of  gravity , $ F_{g} = mg $ <br> Normal force , $ F_{N} = -mg $ (since no vertical acceleration)</p>
+                    <p onclick="shw(1)" class="eq">Total angular momentum , $L_{s} = I_{0} \omega $ <br>
+                        z component , $L_{z} = L_{s} \cos\phi $ (unchanging due to assumption)<br>
+                        xy component , $l = L_{s} \sin\phi $ (the changing component of $ L_{s} $)</p>
+                    <p onclick="shw(2)" class="eq">Torque , $\tau = mgr\sin\phi $</p>
+                    <p>For a rotational system Newton's Law gives , $\tau = I\alpha \hskip 3em$ ..eq(1) </p>
+                    <p class="xp" onclick="xplain(0)" >Torque due to $F_{g}$ and $F_{b}$ , $$\tau_{1} = -(mg-\rho _{f}Vg)Lsin\theta$$
+                         $$ = -(\rho_{b}Vg-\rho _{f}Vg)Lsin\theta $$
+                         $$ = -\rho_{b}Vg(1-\frac{\rho _{f}}{\rho _{b}})Lsin\theta $$ </p>
+                    
+                </div>
+                <div id="section_22">
+                    <i>click on coloured equations for hints</i>
+                    <div id="exp0">
+                        <p> Torque , $ \tau=  r\times F $ </p>
+                        <p>Torque from gravity , $$\tau_{g}=  L \times -mg = -mgLsin\theta$$</p>
+                        <P>Torque from buoyant force , $$\tau_{b}=  L \times \rho _{f}Vg = \rho _{f}VgLsin\theta$$</P>
+    
+                    </div>
+                    <div id="exp1">
+                        <p>for the pendulum,$$I = mL^{2} $$ </p>
+                        <p> and $$\alpha = \frac{d^{2}\theta }{dt^{2}} ,\hskip 1em v = \frac{d\theta }{dt} $$</p>
+                        <p> $$\Rightarrow mL^{2}\frac{d^{2}\theta }{dt^{2}} = -(mg_{e}Lsin\theta + a\frac{d\theta }{dt}L)$$</p>
+    
+                    </div>
+                </div>
+            </div>
+
+        </div> 
+
+        <!--navigation-->
+        <span id="navigator"></span>
+        
+        <!--script after loading page-->
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script> MathJax = { tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]}}; </script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+        <script type="text/javascript" src="js/frame.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/three@0.119.1/build/three.min.js"></script>
+        <script type="text/javascript" src="./js/font.js"></script>
+        <script type="text/javascript" src="js/algebra.js"></script>
+
+    </body>
+
+</html>

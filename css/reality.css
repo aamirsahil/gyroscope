@@ -1,0 +1,24 @@
+
+.thumbnail:nth-child(1),#page_names >text:nth-child(1) {
+    opacity: 1;
+} 
+#bar {
+    width: calc(0vw + 2vw*var(--loader));
+}
+figure{
+    margin: auto;
+}
+figure>video{
+    height: 40vh;
+    width: 20vw;
+    object-fit: cover;
+    margin-top: 8vh;
+    border-radius: 0.5vh;
+}
+figcaption{
+    text-align: center;
+    text-decoration: none ;
+    color: black;
+    transform:scale(var(--dim1),var(--dim2));
+    
+}

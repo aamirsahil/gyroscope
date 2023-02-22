@@ -1,0 +1,106 @@
+:root{
+    --exp0:0;
+    --exp1:0;
+}
+.thumbnail:nth-child(4),#page_names >text:nth-child(4) {
+    opacity: 1;
+} 
+#bar {
+     width: calc(29.5vw + 10vw*var(--loader));
+}
+
+canvas{
+    margin: auto;
+}
+#content{
+    font-size: smaller;
+    border-left: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+}
+#section_1{
+    border: 0;
+    overflow:hidden;
+}
+#section_2 {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 60% 40%;
+    background-color: white;
+    border: 0;
+    overflow-x: hidden;
+    
+}
+.eq{ 
+    background-color:rgba(63, 231, 231, 0.411);
+    padding: 2vh;
+    border-radius: 1.5vh;
+    width: fit-content;
+}
+.xp{ 
+    background-color:rgba(63, 231, 231, 0.411);
+    border-radius: 1vh;
+    padding: 2vh;
+    
+}
+#section_21{
+    background-color: aliceblue;
+    padding-right: 1vw;
+    overflow-y: scroll; 
+}
+#section_22{
+    padding: 2vw ;
+}
+#exp0{
+    padding-top: 7vw;
+    opacity: var(--exp0);
+    position: fixed;
+}
+#exp1{
+    padding-top: 7vw;
+    opacity: var(--exp1);
+    position: fixed;
+}
+input[type="range"] {
+    display: inline-block;
+    -webkit-appearance: none;
+    background-color: #ccc;
+    width: 13vw;
+    height: 0.5vh;
+    border-radius: 1vh;
+    margin: 0;
+    outline:0;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background-color:steelblue ;
+    width: 4vh;
+    height: 4vh;
+    border-radius: 50%;
+    border: .5vh solid #ccc;
+    cursor:pointer;
+    transition: .25s ease-in-out;
+  }​
+    input[type="range"]::-webkit-slider-thumb:hover {
+    background-color:steelblue;
+    border: .5vh solid white;
+  }
+    input[type="range"]::-webkit-slider-thumb:active {
+    transform: scale(1.2);
+  }
+  input[type="range"]::-moz-range-thumb {
+    -webkit-appearance: none;
+    background-color:steelblue ;
+    width: 4vh;
+    height: 4vh;
+    border-radius: 50%;
+    border: .5vh solid #ccc;
+    cursor:pointer;
+    transition: .25s ease-in-out;
+  }​
+    input[type="range"]::-moz-range-thumb:hover {
+    background-color:steelblue;
+    border: .5vh solid white;
+  }
+    input[type="range"]::-moz-range-thumb:active {
+    transform: scale(1.2);
+  }

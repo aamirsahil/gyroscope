@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Geometric</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel = "stylesheet" href="css/frame.css">
+        <link rel = "stylesheet" href="css/geometric_bc.css">
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.min.js" integrity="sha512-NxocnqsXP3zm0Xb42zqVMvjQIktKEpTIbCXXyhBPxqGZHqhcOXHs4pXI/GoZ8lE+2NJONRifuBpi9DxC58L0Lw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sketch.js/1.0/sketch.min.js" integrity="sha512-kSEyW+qGJr8nB9W0xap8JTmchLnDdjAh5OBrjWQmWbfjRKRNb1goxSWmJbwFN6Gnf+ruF1fmvQhVwYPt/0hKqA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    </head>
+
+    <body>
+        <!--logo-->
+        <a id="logo" href="index.html"><img src="images/logo.webp"></a>
+        
+        <!--page thumbnails-->
+        <div id="page_thumbnails_container"></div>
+
+         <!--progress-->
+        <div id="progress"></div>       
+
+        <!--page names-->
+        <div id="page_names"></div>
+
+        <!--content-->
+        <div id="content">
+
+            <!--Aliceblue box-->
+            <div id="section_1">
+
+                <b><br>Identifying Forces : </b><br><br>
+                Now we wants to identify various forces acting on the bob.<br><br>
+                <input type="checkbox" autocomplete="off" id="Weight" class="switch" onchange="mark(Weight)">
+                <label for="Weight"> Weight</label><br>
+                <input type="checkbox" autocomplete="off" id="AngMomentum" class="switch" onchange="mark(AngMomentum)">
+                <label for="AngMomentum"> Angular momentum</label><br>
+                <input type="checkbox" autocomplete="off" id="ResolveMomentum" class="switch" onchange="mark(ResolveMomentum)">
+                <label for="ResolveMoementum"> Resolve momentum</label><br>
+                <input type="checkbox" autocomplete="off" id="Torque" class="switch" onchange="mark(Torque)">
+                <label for="Torque"> Torque</label>
+                <br><br><b>Adjust timescale :</b><br>
+                <input type="range" autocomplete="off" id="slider" min="0" max="1" step="0.01" value="1" oninput="timeChanger(this.value)">
+                <br>
+                <br><br>&#966; :
+                <input id="phiSlider" autocomplete="off" type="range" class="range" min="10" max="170" step="0.01" value="30"> <span id="phiText">30</span>&#176;
+                <br><br>&#969;:
+                <input id="omegaSSlider" autocomplete="off" type="range" class="range" min="10" max="720" step="1" value="360"> <span id="omegaSText">360</span>&#176;/s
+                <br><br>mass :
+                <input id="massSlider" autocomplete="off" type="range" class="range" min="0.01" max="5" step="0.01" value="0.1"> <span id="massText">0.1</span>kg
+                <br><br>length :
+                <input id="lengthSlider" autocomplete="off" type="range" class="range" min="0.01" max="1" step="0.01" value="0.15"> <span id="lengthText">0.15</span>m
+                <br><br>radius :
+                <input id="radiusSlider" autocomplete="off" type="range" class="range" min="0.01" max="0.2" step="0.01" value="0.1"> <span id="radiusText">0.1</span>m
+            </div>
+
+            <!--White box-->
+            <div id="section_2">
+                <div id="infor"> 
+                </div>
+                
+            </div>
+
+        </div> 
+
+        <!--navigation-->
+        <span id="navigator"></span>
+        
+        <!--script after loading page-->
+        <script type="text/javascript" src="js/frame.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/three@0.119.1/build/three.min.js"></script>
+        <script type="text/javascript" src="./js/font.js"></script>
+        <script type="text/javascript" src="js/geometric_b.js"></script>
+
+    </body>
+
+</html>

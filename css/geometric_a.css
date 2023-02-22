@@ -1,0 +1,115 @@
+:root{
+    --x1:0;
+}
+.thumbnail:nth-child(3),#page_names >text:nth-child(3) {
+    opacity: 1;
+} 
+#bar {
+    width: calc(15vw + 10vw*var(--loader));
+}
+
+canvas{
+    margin: 0.5vh auto;
+}
+
+input[type=checkbox] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+}
+.switch {
+    height: 2vw;
+    width: 4vw;
+    border-radius: 3vh;
+    display: inline-block;
+    position: relative;
+    margin: auto;
+    background: #ccc;
+    transition: all 0.1s ease-in;
+}
+.switch:after {
+    content: "";
+    position: absolute;
+    width: 2vw;
+    height: 2vw;
+    border-radius: 50%;
+    background: teal;
+    transition: all 0.1s ease-out;
+}
+
+.switch:checked:after {
+    transform: translatex(2vw);
+}
+input[type="range"] {
+    display: inline-block;
+    -webkit-appearance: none;
+    background-color: #ccc;
+    width: 15vw;
+    height: 0.5vh;
+    border-radius: 1vh;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background-color:steelblue ;
+    width: 4vh;
+    height: 4vh;
+    border-radius: 50%;
+    border: .5vh solid #ccc;
+    cursor:pointer;
+    transition: .25s ease-in-out;
+  }
+    input[type="range"]::-webkit-slider-thumb:hover {
+    background-color:steelblue;
+    border: .5vh solid #ccc;
+  }
+    input[type="range"]::-webkit-slider-thumb:active {
+    transform: scale(1.2);
+  }
+  input[type="range"]::-moz-range-thumb {
+    -moz-appearance: none;
+    background-color:steelblue ;
+    width: 4vh;
+    height: 4vh;
+    border-radius: 50%;
+    border: .5vh solid #ccc;
+    cursor:pointer;
+    transition: .25s ease-in-out;
+  }
+    input[type="range"]::-moz-range-thumb:hover {
+    background-color:steelblue;
+    border: .5vh solid #ccc;
+  }
+    input[type="range"]::-moz-range-thumb:active {
+    transform: scale(1.2);
+  }
+
+ #item1{
+     opacity:var(--x1) ;
+     transition: .7s ease-in;
+ } 
+
+ #infor {
+     background-color: rgba(255, 68, 0, 0.527);
+     max-width: 40vw;
+     max-height: 15vh;
+     font-size: small;
+     position: absolute;top:84vh;left:43vw;
+     border-radius: 3vh;
+     z-index: 5;
+ }
+ #infor>text{
+     padding: 1vw;
+
+ }
+ button{
+     display: block;
+     cursor:pointer;
+     width: 3vw;
+     border: 0;
+     margin: auto;
+     margin-bottom: 1vh;
+     border-radius: 0.5vh;
+     background-color: white;
+ }
