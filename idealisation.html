@@ -46,6 +46,9 @@
 
             <!--White box-->
             <div id="section_2">
+                    <figure>
+                        <video loop autoplay muted> <source src="images/realGyro1.mp4" type="video/mp4"> </video>
+                    </figure>  
                     <div id="ideal"></div>
                     <!-- <img id="real" src="images/realGyro.gif"> -->
             </div>
@@ -73,24 +76,24 @@
             renderer.setClearColor( 0xffffff );
             container.appendChild(renderer.domElement);
 
-            var planeTexture = new THREE.TextureLoader().load( './images/wood.jpg' );
-            var planeGeometry = new THREE.PlaneGeometry( 5, 5, 32 );
-            var planeMaterial = new THREE.MeshBasicMaterial( { map: planeTexture, side: THREE.DoubleSide, transparent: true, opacity: 1.0 } );
-            var plane = new THREE.Mesh( planeGeometry, planeMaterial );
+            // var planeTexture = new THREE.TextureLoader().load( './images/wood.jpg' );
+            // var planeGeometry = new THREE.PlaneGeometry( 5, 5, 32 );
+            // var planeMaterial = new THREE.MeshBasicMaterial( { map: planeTexture, side: THREE.DoubleSide, transparent: true, opacity: 1.0 } );
+            // var plane = new THREE.Mesh( planeGeometry, planeMaterial );
 
-            plane.rotation.x = Math.PI / 2;
-            plane.position.y = -0.5;
+            // plane.rotation.x = Math.PI / 2;
+            // plane.position.y = -0.5;
 
-            scene.add( plane );
+            // scene.add( plane );
 
-            // Create the stationary stand
-            var standTexture = new THREE.TextureLoader().load( './images/stand.jpg' );
-            var standGeometry = new THREE.ConeGeometry(0.2, 0.5, 32);
-            var standMaterial = new THREE.MeshBasicMaterial({ map: standTexture, transparent: true, opacity: 1.0 });
-            var stand = new THREE.Mesh(standGeometry, standMaterial);
-            scene.add(stand);
+            // // Create the stationary stand
+            // var standTexture = new THREE.TextureLoader().load( './images/stand.jpg' );
+            // var standGeometry = new THREE.ConeGeometry(0.2, 0.5, 32);
+            // var standMaterial = new THREE.MeshBasicMaterial({ map: standTexture, transparent: true, opacity: 1.0 });
+            // var stand = new THREE.Mesh(standGeometry, standMaterial);
+            // scene.add(stand);
 
-            stand.position.y = -0.25;
+            // stand.position.y = -0.25;
 
             // Create the rotating axle
             var pivot = new THREE.Object3D();
@@ -99,28 +102,28 @@
             // var phiPivot = new THREE.Object3D();
             pivot.rotation.z = Math.PI/3;
             
-            var axleTexture = new THREE.TextureLoader().load( './images/axle.jpg' );
-            var axleGeometry = new THREE.CylinderGeometry(0.05, 0.05, 0.5, 32);
-            var axleMaterial = new THREE.MeshBasicMaterial({ map: axleTexture, transparent: true, opacity: 1.0 });
-            var axle = new THREE.Mesh(axleGeometry, axleMaterial);
+            // var axleTexture = new THREE.TextureLoader().load( './images/axle.jpg' );
+            // var axleGeometry = new THREE.CylinderGeometry(0.05, 0.05, 0.5, 32);
+            // var axleMaterial = new THREE.MeshBasicMaterial({ map: axleTexture, transparent: true, opacity: 1.0 });
+            // var axle = new THREE.Mesh(axleGeometry, axleMaterial);
 
-            axle.position.y = 0.20;
+            // axle.position.y = 0.2;
 
-            // Create the disk
-            var diskTexture = new THREE.TextureLoader().load( './images/disk.jpg' );
-            var diskGeometry = new THREE.CylinderGeometry(0.25, 0.25, 0.05, 32);
-            var diskMaterial = new THREE.MeshBasicMaterial({ map: diskTexture, transparent: true, opacity: 1.0 });
-            var disk = new THREE.Mesh(diskGeometry, diskMaterial);
+            // // Create the disk
+            // var diskTexture = new THREE.TextureLoader().load( './images/disk.jpg' );
+            // var diskGeometry = new THREE.CylinderGeometry(0.25, 0.25, 0.05, 32);
+            // var diskMaterial = new THREE.MeshBasicMaterial({ map: diskTexture, transparent: true, opacity: 1.0 });
+            // var disk = new THREE.Mesh(diskGeometry, diskMaterial);
             
-            disk.position.y = 0.45;
+            // disk.position.y = 0.45;
 
             // Create the stationary stand
-            var idealStandGeometry = new THREE.CylinderGeometry(0.005, 0.005, 1, 32);
+            var idealStandGeometry = new THREE.ConeGeometry(0.2, 0.5, 32);
             var idealStandMaterial = new THREE.MeshBasicMaterial({ color: 0x000000, transparent: true, opacity: 0.0 });
             var idealStand = new THREE.Mesh(idealStandGeometry, idealStandMaterial);
             
             idealStand.position.z = 0;
-            idealStand.position.y = 1/2;
+            idealStand.position.y = -0.25;
             
             scene.add(idealStand);
 
@@ -129,17 +132,16 @@
             var idealAxleMaterial = new THREE.MeshBasicMaterial({ color: 0x000000, transparent: true, opacity: 0.0 });
             var idealAxle = new THREE.Mesh(idealAxleGeometry, idealAxleMaterial);
 
-            idealAxle.position.y = 0.20;
+            idealAxle.position.y = 0.25;
             
             // // Create the disk
             var idealDiskGeometry = new THREE.CylinderGeometry(0.25, 0.25, 0.05, 32);
             var idealDiskMaterial = new THREE.MeshBasicMaterial({ color: 0x000000, transparent: true, opacity: 0.0 });
             var idealDisk = new THREE.Mesh(idealDiskGeometry, idealDiskMaterial);
             
-            idealDisk.position.y = 0.45;
+            idealDisk.position.y = 0.5;
             
-            pivot.add( axle );
-            pivot.add( disk );
+            // pivot.add( axle );
 
             idealAxle.renderOrder = -1;
             idealDisk.renderOrder = -1;
@@ -152,18 +154,13 @@
             var animate = function() {
                 requestAnimationFrame(animate);
                 let slider_value = SLIDER.value;
+                let idealOpacity = relu(linearTransform(0.5,0.2,1.0,1.0,slider_value));
 
-                standMaterial.opacity = 1 - slider_value;
-                axleMaterial.opacity = 1 - slider_value;
-                diskMaterial.opacity = 1 - slider_value;
-                planeMaterial.opacity = 1 - slider_value;
+                idealStandMaterial.opacity = idealOpacity;
+                idealAxleMaterial.opacity = idealOpacity;
+                idealDiskMaterial.opacity = idealOpacity*0.75;
 
-                idealStandMaterial.opacity = slider_value;
-                idealAxleMaterial.opacity = slider_value;
-                idealDiskMaterial.opacity = slider_value*0.75;
-
-                pivot.rotation.y += 0.01;
-                disk.rotation.y += 0.01;
+                pivot.rotation.y -= 0.01;
                 idealDisk.rotation.y += 0.01; 
 
                 renderer.render(scene, camera);
@@ -178,6 +175,16 @@
             window.addEventListener('resize', onWindowResize);
 
             animate();
+
+            function linearTransform(x1,y1,x2,y2,x){
+                m = (y2-y1)/(x2-x1);
+                y = m*(x-x1) + y1;
+                return y;
+            }
+            function relu(x){
+                if(x<0) return 0;
+                else return x;
+            }
         </script>
 
     </body>

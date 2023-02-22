@@ -1,6 +1,6 @@
 :root{
     --real:1;
-    --ideal:1;
+    --ideal:0;
     --x1:0;
     --x2:0;
     --x3:1;
@@ -67,9 +67,18 @@
 }
 #ideal{
     opacity: var(--ideal);
-    position: relative;
-    width: 700px;
-    height: 500px;
+    position: absolute;
+    width: 40vw;
+    height: 60vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+figure>video{
+    height: 60vh;
+    width: 40vw;
+    object-fit: cover;
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);

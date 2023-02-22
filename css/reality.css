@@ -9,8 +9,8 @@ figure{
     margin: auto;
 }
 figure>video{
-    height: 40vh;
-    width: 20vw;
+    height: 60vh;
+    width: 40vw;
     object-fit: cover;
     margin-top: 8vh;
     border-radius: 0.5vh;

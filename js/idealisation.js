@@ -5,7 +5,7 @@ document.getElementById("right").href = "geometric_a.html";
 function Changer(value){
     const docx = document.documentElement;
     // docx.style.setProperty('--real',1-2*value);
-    // docx.style.setProperty('--ideal',2*value);
+    docx.style.setProperty('--ideal',2*value);
     if (value>0.1){docx.style.setProperty('--x1',1);}
     else{docx.style.setProperty('--x1',0);}
     if (value>0.5){
